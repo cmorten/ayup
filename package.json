@@ -1,0 +1,14 @@
+{
+  "name": "ayup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": "bin/ayup",
+  "scripts": {
+    "ayup": "bin/ayup"
+  },
+  "dependencies": {
+    "madge": "^3.4.4",
+    "minimist": "^1.2.0",
+    "nodegit-kit": "^0.20.1"
+  }
+}
