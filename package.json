@@ -1,8 +1,15 @@
 {
   "name": "ayup",
   "version": "1.0.0",
+  "license": "UNLICENSED",
+  "description": "For being lazy with what you test.",
   "main": "index.js",
   "bin": "bin/ayup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asos-craigmorten/ayup.git"
+  },
+  "homepage": "https://github.com/asos-craigmorten/ayup",
   "scripts": {
     "ayup": "bin/ayup"
   },
