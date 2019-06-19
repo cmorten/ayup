@@ -29,10 +29,30 @@ Flags:
         -b,     --branch                The branch of the git repository to watch.
 ```
 
-## Example
+## Examples
 
 To get relevant test files for the `develop` branch of the local repo located at `/path/to/repo/` run:
 
 ```console
 yarn ayup -d "/path/to/repo/" -b "develop"
+```
+
+This can be used in conjunction with testing frameworks such as jest like so:
+
+```bash
+#!/bin/bash
+
+echo "Here is the file diff:"
+echo -e "$(git diff --name-only HEAD HEAD~1)\n"
+
+files=$(ayup -d ./ -b develop)
+
+echo "Here are the relevant test files:"
+echo -e "${files}\n"
+
+if [ ! -z "${files}" ]; then
+  jest test ${files}
+else
+  echo "No relevant test files found!"
+fi
 ```
