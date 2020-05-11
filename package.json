@@ -1,6 +1,6 @@
 {
   "name": "ayup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "For being lazy with what you test.",
   "source": "src/index.js",
   "main": "lib/index.js",
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "madge": "^3.4.4",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "simple-git": "^2.4.0"
   },
   "devDependencies": {
