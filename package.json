@@ -1,21 +1,58 @@
 {
   "name": "ayup",
   "version": "1.0.0",
-  "license": "UNLICENSED",
   "description": "For being lazy with what you test.",
-  "main": "index.js",
+  "source": "src/index.js",
+  "main": "lib/index.js",
+  "modern": "lib/index.modern.js",
+  "module": "lib/index.module.js",
+  "unpkg": "lib/index.umd.js",
   "bin": "bin/ayup",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asos-craigmorten/ayup.git"
   },
-  "homepage": "https://github.com/asos-craigmorten/ayup",
+  "keywords": [
+    "testing",
+    "test",
+    "watch"
+  ],
+  "author": "Craig Morten <craig.morten@asos.com>",
+  "bugs": {
+    "url": "https://github.com/asos-craigmorten/ayup/issues"
+  },
+  "homepage": "https://github.com/asos-craigmorten/ayup#README",
   "scripts": {
-    "ayup": "bin/ayup"
+    "ayup": "bin/ayup",
+    "build": "microbundle --globals 'simple-git/promise=gitPromise'",
+    "ci": "yarn lint && yarn test:unit && yarn build && yarn test:int",
+    "dev": "microbundle watch --globals 'simple-git/promise=gitPromise'",
+    "lint": "eslint ./src",
+    "test:unit": "jest ./src --coverage",
+    "test:int": "jest ./test/integration",
+    "toc": "yarn toc:contributing && yarn toc:readme",
+    "toc:contributing": "markdown-toc -i --bullets=\"-\" docs/CONTRIBUTING.md",
+    "toc:readme": "markdown-toc -i --bullets=\"-\" README.md",
+    "prepublishOnly": "yarn ci"
   },
   "dependencies": {
     "madge": "^3.4.4",
     "minimist": "^1.2.0",
-    "nodegit-kit": "^0.20.1"
+    "simple-git": "^2.4.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-jest": "^26.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^25.3.0",
+    "markdown-toc": "^1.2.0",
+    "microbundle": "^0.12.0",
+    "prettier": "^2.0.5"
   }
 }
