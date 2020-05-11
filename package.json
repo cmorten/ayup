@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "madge": "^3.4.4",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.3",
     "simple-git": "^2.4.0"
   },
   "devDependencies": {
