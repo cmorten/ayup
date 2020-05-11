@@ -23,5 +23,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn ci
         env:
-          SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
           CI: true
