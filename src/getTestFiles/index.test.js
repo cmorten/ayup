@@ -1,11 +1,11 @@
 import getTestFiles from "./";
 import unique from "./unique";
-import isBlacklisted from "./isBlacklisted";
-import isWhitelisted from "./isWhitelisted";
+import isBlocklisted from "./isBlocklisted";
+import isAllowlisted from "./isAllowlisted";
 
 jest.mock("./unique", () => jest.fn());
-jest.mock("./isBlacklisted", () => jest.fn());
-jest.mock("./isWhitelisted", () => jest.fn());
+jest.mock("./isBlocklisted", () => jest.fn());
+jest.mock("./isAllowlisted", () => jest.fn());
 
 const mockDependencyTree = {
   "test-file-1": [
@@ -35,14 +35,14 @@ const mockGraph = {
   depends: jest.fn(),
 };
 
-const mockBlackListedFile = Symbol("test-blacklisted-file");
-const mockNotWhiteListedFile = Symbol("test-not-whitelisted-file");
+const mockBlockListedFile = Symbol("test-blocklisted-file");
+const mockNotAllowListedFile = Symbol("test-not-allowlisted-file");
 const mockFile1 = Symbol("test-file-1");
 const mockFile2 = Symbol("test-file-2");
 
 const mockUniqueFiles = [
-  mockBlackListedFile,
-  mockNotWhiteListedFile,
+  mockBlockListedFile,
+  mockNotAllowListedFile,
   mockFile1,
   mockFile2,
 ];
@@ -55,8 +55,8 @@ describe("getTestFiles", () => {
 
     mockGraph.depends.mockImplementation((file) => mockDependencyTree[file]);
     unique.mockReturnValue(mockUniqueFiles);
-    isBlacklisted.mockImplementation((file) => file === mockBlackListedFile);
-    isWhitelisted.mockImplementation((file) => file !== mockNotWhiteListedFile);
+    isBlocklisted.mockImplementation((file) => file === mockBlockListedFile);
+    isAllowlisted.mockImplementation((file) => file !== mockNotAllowListedFile);
 
     result = getTestFiles({ files: mockFiles, graph: mockGraph });
   });
@@ -71,21 +71,21 @@ describe("getTestFiles", () => {
     expect(unique).toHaveBeenCalledWith(mockFilesAndDependencies);
   });
 
-  it("should call 'isBlacklisted' for each of the unique files", () => {
+  it("should call 'isBlocklisted' for each of the unique files", () => {
     mockUniqueFiles.forEach((file) =>
-      expect(isBlacklisted).toHaveBeenCalledWith(file)
+      expect(isBlocklisted).toHaveBeenCalledWith(file)
     );
   });
 
-  it("should call 'isWhitelisted' for each of the unique files that aren't blacklisted", () => {
+  it("should call 'isAllowlisted' for each of the unique files that aren't blocklisted", () => {
     const [_, ...expectedFiles] = mockUniqueFiles;
 
     expectedFiles.forEach((file) =>
-      expect(isWhitelisted).toHaveBeenCalledWith(file)
+      expect(isAllowlisted).toHaveBeenCalledWith(file)
     );
   });
 
-  it("should return an array of test files that are not blacklisted and are whitelisted", () => {
+  it("should return an array of test files that are not blocklisted and are allowlisted", () => {
     expect(result).toEqual([mockFile1, mockFile2]);
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "ayup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "For being lazy with what you test.",
   "source": "src/index.js",
   "main": "lib/index.js",

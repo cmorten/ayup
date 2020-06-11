@@ -6,8 +6,8 @@ const errors = {
   git: "Unable to retrieve git diff for provided directory and branch.",
 };
 
-const blacklist = ["node_modules", "__snapshots__"];
-const whitelist = [".test.js", ".spec.js"];
+const blocklist = ["node_modules", "__snapshots__"];
+const allowlist = [".test.js", ".spec.js"];
 
 const defaultDirectory = "./";
 
@@ -20,4 +20,4 @@ Flags:
 \t-b,\t--branch\t\tThe branch of the git repository to analyse.
 `;
 
-export { errors, blacklist, whitelist, defaultDirectory, help };
+export { errors, blocklist, allowlist, defaultDirectory, help };
