@@ -37,7 +37,7 @@
     "prepublishOnly": "yarn ci"
   },
   "dependencies": {
-    "madge": "^3.4.4",
+    "madge": "^4.0.1",
     "minimist": "^1.2.5",
     "simple-git": "^2.4.0"
   },
