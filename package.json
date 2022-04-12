@@ -39,7 +39,7 @@
   "dependencies": {
     "madge": "^3.4.4",
     "minimist": "^1.2.5",
-    "simple-git": "^2.4.0"
+    "simple-git": "^3.5.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.9.6",
